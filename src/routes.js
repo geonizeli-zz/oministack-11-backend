@@ -1,9 +1,12 @@
 const express = require('express')
 
+const OngsController = require('./controllers/OngController')
+
+const connection = require('./database/connection')
+
 const routes = express.Router()
 
-routes.get('/', (req, res) => {
-  return res.send('Hello, World!')
-})
+routes.get('/ongs', OngsController.index)
+routes.post('/ongs', OngsController.create)
 
 module.exports = routes
