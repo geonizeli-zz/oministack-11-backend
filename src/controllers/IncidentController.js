@@ -40,11 +40,10 @@ module.exports = {
     const ong_id = req.headers.authorization
 
     const incidents = await connection('incidents')
-    .where('id', id)
-    .select('ong_id')
-    .first
+      .where('id', id)
+      .select('ong_id')
 
-    if (incidents.ong_id !== ong_id) {
+    if (incidents[0].ong_id !== ong_id) {
       return res.status(401).json({ error: 'Operation not permited' })
     }
 
